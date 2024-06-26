@@ -8,6 +8,12 @@ import com.basic.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * This handles the core business logic, such as
+ * - retrieving data from the database
+ * - performing necessary calculations
+ * - managing data modifications
+ */
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
