@@ -25,7 +25,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"    pm.response.to.have.status(200);",
 							"});",
 							""
 						],
@@ -52,7 +52,7 @@
 						"{{base_url}}"
 					]
 				},
-				"description": "This is a POST request, submitting JSON data to an API via the request body.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+				"description": "This is creates a user.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
@@ -81,7 +81,7 @@
 						"{{base_url}}"
 					]
 				},
-				"description": "This is a GET request and it is used to \"get\" a list of data from an endpoint. There is no request body for a GET request.\n\nFuture features is to add query parameters to help specify the resource you want data on, i.e. in this request, we have `id=1`.\n\nA successful GET response will have a `200 OK` status, and should include a response body."
+				"description": "This returns a list of users.\n\nResponse will have a `200 OK` status and a response body.\n\n###### Future feature\n\nAdd query parameters, e.g. pagination, search terms and sorting."
 			},
 			"response": []
 		},
@@ -119,7 +119,7 @@
 						}
 					]
 				},
-				"description": "This is a GET request and it is used to \"get\" a specific data from an endpoint. There is no request body for a GET request.\n\nA successful GET response will have a `200 OK` status, and should include a JSON response body."
+				"description": "This is a specific user.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
@@ -167,7 +167,7 @@
 						}
 					]
 				},
-				"description": "This is a PUT request and it is used to modify an existing piece of data. An entity is identified using the `id`.\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+				"description": "This is modifies an existing user. The entity is identified using the `id`.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
@@ -215,7 +215,7 @@
 						}
 					]
 				},
-				"description": "This is a DELETE request, and it is used to delete data that was previously created. An entity is identified using the `id`.\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+				"description": "This is deletes an existing user. The entity is identified using the `id`.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		}
