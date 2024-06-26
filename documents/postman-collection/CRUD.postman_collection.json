@@ -81,7 +81,7 @@
 						"{{base_url}}"
 					]
 				},
-				"description": "This returns a list of users.\n\nResponse will have a `200 OK` status and a response body.\n\n###### Future feature\n\nAdd query parameters, e.g. pagination, search terms and sorting."
+				"description": "This returns a list of users.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
