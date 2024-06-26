@@ -68,5 +68,22 @@ docker compose up -d
         - Update a user
         - Delete a user
 
+## Extra features
+- [ ] Query parameters in `Get all users` request
+- [x] Database access using JPA&Hibernate, MySQL as database
+- [ ] Optional: Liquibase to manage your DB tables
+- [x] Docker compose to boot your DB locally
+- [ ] HTTP calls to other services, using Feign 
+  - Use a public API like Nasa
+- [ ] Understand Spring beans and their lifecycles, dependency injection 
+  - Dependency Injection Basics in this link covers the most
+- [ ] Secure endpoints with Spring security and JWT
+  - [Rest api spring security with jwt Tutorial](https://bootify.io/spring-security/rest-api-spring-security-with-jwt.html)
+- [ ] Use Mapstruct to map DTOs <-> DB Entities
+- [ ] Publish events from application to a local Kafka instance 
+  - Kafka can be locally boot with docker-compose, similar to MySQL db.
+    - Is this Redpanda?
+
 ## Resources
 - [Getting Started with CRUD Operations in Spring Boot and MySQL: A Beginner's Guide](https://freedium.cfd/https://medium.com/linkit-intecs/getting-started-with-crud-operations-in-spring-boot-and-mysql-a-beginners-guide-756fd5b861d0)
+- [Rest api spring security with jwt](https://bootify.io/spring-security/rest-api-spring-security-with-jwt.html)

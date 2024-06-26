@@ -8,18 +8,29 @@
 	},
 	"item": [
 		{
-			"name": "Create user",
+			"name": "Create a user",
 			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Successful POST request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"    pm.response.to.have.status(200);",
 							"});",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -28,7 +39,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"raw": "{\n\t\"name\": \"{{$randomFullName}}\",\n    \"address\":\"{{$randomStreetAddress}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,78 +47,84 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/info",
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				},
+				"description": "This is creates a user.\n\nResponse will have a `200 OK` status and a response body."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				},
+				"description": "This returns a list of users.\n\nResponse will have a `200 OK` status and a response body."
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/:id",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"info"
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
 					]
 				},
-				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+				"description": "This is a specific user.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
 		{
-			"name": "Get users",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}",
-					"host": [
-						"{{base_url}}"
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
-			"name": "Get specific user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}",
-					"host": [
-						"{{base_url}}"
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
-			"name": "Update user",
+			"name": "Update a user",
 			"event": [
 				{
 					"listen": "test",
@@ -118,7 +135,8 @@
 							"});",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -127,7 +145,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"raw": "{\n\t\"name\": \"{{$randomFullName}}\",\n    \"address\":\"{{$randomStreetAddress}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -135,26 +153,26 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/info?id=1",
+					"raw": "{{base_url}}/:id",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"info"
+						":id"
 					],
-					"query": [
+					"variable": [
 						{
 							"key": "id",
 							"value": "1"
 						}
 					]
 				},
-				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+				"description": "This is modifies an existing user. The entity is identified using the `id`.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		},
 		{
-			"name": "Delete data",
+			"name": "Delete a user",
 			"event": [
 				{
 					"listen": "test",
@@ -165,7 +183,8 @@
 							"});",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -182,21 +201,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/info?id=1",
+					"raw": "{{base_url}}/:id",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"info"
+						":id"
 					],
-					"query": [
+					"variable": [
 						{
 							"key": "id",
 							"value": "1"
 						}
 					]
 				},
-				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+				"description": "This is deletes an existing user. The entity is identified using the `id`.\n\nResponse will have a `200 OK` status and a response body."
 			},
 			"response": []
 		}
