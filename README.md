@@ -1,6 +1,5 @@
 # CRUD with Springboot and MySQL
 
-## Description
 An introduction to Creating, Reading, Updating and Deleting data 
 in a MySQL database using Springboot.
 The tutorial used is 
@@ -46,6 +45,28 @@ The service layer interfaces with the implementation layer to handle the actual 
 
 This layered architecture contributes to the development of a more structured, maintainable 
 and comprehensible CRUD application.
+
+## Running the application
+### Prerequisites
+- Docker for the MySQL database
+- Postman
+
+#### Set up docker
+1. Set up a collection in Postman
+   - Import the [CRUD collection](./documents/postman-collection/CRUD.postman_collection.json) to Postman
+2. Set up the MySQL database using docker
+    - Always ensure that the MySQL database is running before starting the application
+```shell
+docker compose up -d
+```
+3. Run the application ![img1](./documents/assets/run-the-app.png)
+4. Run the collection in Postman
+    - The collection contains the following requests:
+        - Create a user
+        - Get all users
+        - Get a user by id
+        - Update a user
+        - Delete a user
 
 ## Resources
 - [Getting Started with CRUD Operations in Spring Boot and MySQL: A Beginner's Guide](https://freedium.cfd/https://medium.com/linkit-intecs/getting-started-with-crud-operations-in-spring-boot-and-mysql-a-beginners-guide-756fd5b861d0)
