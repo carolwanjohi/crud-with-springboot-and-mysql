@@ -9,10 +9,13 @@ import jakarta.persistence.Id;
 // What is `lombok` package?
 import lombok.Data;
 
+// Why are both needed?
 @Entity
 @Data
 public class User {
+    // What does this annotation do?
     @Id
+    // What does this annotation do?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
