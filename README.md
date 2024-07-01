@@ -71,6 +71,8 @@ docker compose up -d
 ## :hammer_and_pick: Extra features
 - [ ] Query parameters in the `Get all users` request
 - [x] Database access using JPA&Hibernate, MySQL as database
+     - [ ] What is containerisation?
+     - [ ] How does it work?
 - [ ] Optional: Liquibase to manage your DB tables
 - [x] Docker compose to boot your DB locally
 - [ ] HTTP calls to other services, using Feign 
